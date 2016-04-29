@@ -9,9 +9,6 @@ import java.io.PrintStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-/**
- * Created by Praveen on 18-Apr-16.
- */
 public class Handler extends Thread {
 
     Board board;
