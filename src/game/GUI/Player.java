@@ -6,7 +6,14 @@ public class Player {
     String host;
     int port;
     int status;     //0:NOT PLAYING 1:CONNECTED 2:PLAYING 3:DISCONNECTED
+    public boolean isAlive=true;
     boolean isbot;
+    public int Lives = 3;
+
+    public int getLives()
+    {
+        return Lives;
+    }
 
     public Player(int id, String host, int port, int status, boolean isbot,String name) {
         this.id = id;
@@ -55,10 +62,10 @@ public class Player {
     public boolean isbot() {
         return isbot;
     }
-public void updateStatus(int a)
-{
-    status=a;
-}
+    public void updateStatus(int a)
+    {
+        status=a;
+    }
     public String getName() {
         return name;
 
