@@ -72,7 +72,7 @@ int count;
                     )
             );
 
-            server.servergui.updateUsers();
+            Menu.gui.updateUsers();
 
 
             //ADDMEMBER 127.0.0.1 3128
@@ -86,7 +86,7 @@ int count;
                             msgArray[3]
                     )
             );
-            server.servergui.updateUsers();
+            Menu.gui.updateUsers();
 
 
             //PLAYER i pos
