@@ -125,12 +125,16 @@ public class Board  extends JPanel implements ActionListener{
 
                 if(d > 3 * 10 && d < 97 * 10) {
                     int mid =b.gettileY()*10+5*ballRadius;
+                    if(d>b.gettileY()*10&&d<b.gettileY()*10+10*ballRadius)
+                    {
+                        return 0;
+                    }
                     if (mid-d>0&&b.gettileY()>3) {
                         //   System.out.println(d + " 1 move up " + b.gettileY() * 10);
-                        //TODO
+
                         //       new MessageSender("COMPUTER " + a + " " + bars[Main.playerId].getPos()).start();
                         return -1;
-                    } else if(d-mid-30>0&&b.gettileY()<83){
+                    } else if(d-mid>0&&b.gettileY()<83){
 
                         //  System.out.println(d + " 1 move down " + b.gettileY()*10);
                         return 1;
@@ -147,12 +151,16 @@ public class Board  extends JPanel implements ActionListener{
                     int d=(ballY-ballRadius)*(ballVelocityX)/Math.abs(ballVelocityY)+ballX;
 
                     if (d>3*10&&d<97*10) {
+                        if(d>b.gettileX()*10&&d<b.gettileX()*10+10*ballRadius)
+                        {
+                            return 0;
+                        }
                         int mid =b.gettileX()*10+ballRadius*5;
-                        if (mid-d>0&&b.gettileY()>3) {
+                        if (mid-d>0&&b.gettileX()>3) {
                             return -1;
 
                         }
-                        else if(d-mid-30>0&&b.gettileY()<83) {
+                        else if(d-mid>0&&b.gettileX()<83) {
                             return 1;
 
                         }
@@ -164,21 +172,19 @@ public class Board  extends JPanel implements ActionListener{
                 if (ballVelocityX >0) {
                     int d=(((1000-ballX-ballRadius)*(ballVelocityY))/(ballVelocityX))+ballY;
                     // System.out.println(d+" "+"case3 "+ b.gettileY()*10+" "+ballX+" "+ballY+" "+ballVelocityX+" "+ballVelocityY);
-                    if (d>3*10&&d<97*10) {
+                    if (d>0&&d<1000) {
+                        if(d>b.gettileY()*10&&d<b.gettileY()*10+10*ballRadius)
+                        {
+                            return 0;
+                        }
                         int mid=b.gettileY()*10+ballRadius*5;
-                        //  System.out.println(d+" "+"case3 "+ b.gettileY()*10+" "+ballX+" "+ballY+" "+(mid-d>0)+" pappu");
 
-                        if (mid-d>0&&b.gettileX()>3) {
-                            //   System.out.println("-1)");
+                        if (mid-d>0&&b.gettileY()>3) {
                             return -1;
-                            //TODO
-                            //   new MessageSender("COMPUTER "+a+" "+bars[Main.playerId].getPos()).start();
 
                         }
-                        else if(d-mid-30>0&&b.gettileX()<83)
-                        {
-                            //    System.out.println("1)");
-                            return 1;
+                        else if(d-mid>0&&b.gettileY()<83)
+                        {   return 1;
                         }
 
                     }
@@ -213,13 +219,13 @@ public class Board  extends JPanel implements ActionListener{
 
         //Updating X and Y Coordinates
         if(Main.list.get((4+Main.playerId+2)%4).isbot())
-            bar1.move(compu(bar1,2),0,0,0);
+            bar1.move(2*compu(bar1,2),0,0,0);
         if(Main.list.get((4+Main.playerId+1)%4).isbot())
-            bar3.move(0, compu(bar3,1),0,0);
+            bar3.move(0, 2*compu(bar3,1),0,0);
         if(Main.list.get((4+Main.playerId+3)%4).isbot())
-            bar4.move( 0,compu(bar4,3),0,0);
+            bar4.move( 0,2*compu(bar4,3),0,0);
         if(All_connected()) { //the perception of X-direction motion
-            ballX += ballVelocityX;
+          ballX += ballVelocityX;
 
             // Left Wall
             if (ballX < ballRadius) {
@@ -239,7 +245,10 @@ public class Board  extends JPanel implements ActionListener{
             //Right Wall
             if (ballX > width - ballRadius) {
                 ballX = width - ballRadius; //reset the position
+                System.out.println("case3 "+ballX+" "+ballY+" "+ballVelocityX+" "+ballVelocityY);
+
                 ballVelocityX = -ballVelocityX; //reverse the velocity
+
                 if(Main.list.get((4+Main.playerId+3)%4).isbot() && Main.list.get((4+Main.playerId+3)%4).isAlive) {
                     Main.list.get((4 + Main.playerId + 3) % 4).Lives -= 1;
                     swing._instance.updateScore((4 + Main.playerId + 3) % 4);
@@ -370,13 +379,13 @@ public class Board  extends JPanel implements ActionListener{
         g.fillOval(ballX - ballRadius+(15*32), ballY - ballRadius, ballRadius*2, ballRadius*2);
         g.setColor(Color.magenta);
 
-        if(Main.list.get(Main.playerId).isAlive)
+      //  if(Main.list.get(Main.playerId).isAlive)
             g.fillRoundRect(bar2.gettileX()*10 - ballRadius+(15*32), bar2.gettileY()*10 - ballRadius, ballRadius*10, ballRadius,20,20);
-        if(Main.list.get((Main.playerId+4+2)%4).isAlive)
+       // if(Main.list.get((Main.playerId+4+2)%4).isAlive)
             g.fillRoundRect(bar1.gettileX()*10 - ballRadius+(15*32), bar1.gettileY()*10 - ballRadius, ballRadius*10, ballRadius,20,20);
-        if(Main.list.get((Main.playerId+4+1)%4).isAlive)
+      //  if(Main.list.get((Main.playerId+4+1)%4).isAlive)
             g.fillRoundRect(bar3.gettileX()*10 - ballRadius+(15*32), bar3.gettileY()*10 - ballRadius, ballRadius, ballRadius*10,20,20);
-        if(Main.list.get((Main.playerId+4+3)%4).isAlive)
+      //  if(Main.list.get((Main.playerId+4+3)%4).isAlive)
             g.fillRoundRect(bar4.gettileX()*10 - ballRadius+(15*32), bar4.gettileY()*10 - ballRadius, ballRadius, ballRadius*10,20,20);
 
 
@@ -421,24 +430,22 @@ public class Board  extends JPanel implements ActionListener{
         public  void keyPressed(KeyEvent e)
         {
             int KeyCode=e.getKeyCode();
-//            if(KeyCode==KeyEvent.VK_1)
-//            {
-//
-//               // System.out.println("cklci");
-//                bar=bar1;
-//            }
-//            if(KeyCode==KeyEvent.VK_2)
-//            {
-//                bar=bar2;
-//            }
-//            if(KeyCode==KeyEvent.VK_3)
-//            {
-//                bar=bar3;
-//            }
-//            if(KeyCode==KeyEvent.VK_4)
-//            {
-//                bar=bar4;
-//            }
+            if(KeyCode==KeyEvent.VK_1)
+            {
+                bar=bar1;
+            }
+            if(KeyCode==KeyEvent.VK_2)
+            {
+                bar=bar2;
+            }
+            if(KeyCode==KeyEvent.VK_3)
+            {
+                bar=bar3;
+            }
+            if(KeyCode==KeyEvent.VK_4)
+            {
+                bar=bar4;
+            }
             if(KeyCode==KeyEvent.VK_L)
             {
                 ballY += ballVelocityY;
