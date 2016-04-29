@@ -2,48 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="32374af7-89c6-4ba1-95f5-87454e1db9f2" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../new/src/game/Images/bar.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../new/src/game/Images/bar2 -original.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../new/src/game/Images/bar2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../new/src/game/Images/bg.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../new/src/game/Images/bg2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../new/src/game/Images/createserver.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../new/src/game/Images/exit.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../new/src/game/Images/grass.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../new/src/game/Images/imageedit_1_6626879144.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../new/src/game/Images/imageedit_3_8049116663.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../new/src/game/Images/imageedit_4_8992783572.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../new/src/game/Images/join.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../new/src/game/Images/joinserver.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../new/src/game/Images/multi.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../new/src/game/Images/multiplayer.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../new/src/game/Images/original.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../new/src/game/Images/play.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../new/src/game/Images/single.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../new/src/game/Images/start.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../new/src/game/Images/wall.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../new/.idea/artifacts/new_jar.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../new/src/META-INF/MANIFEST.MF" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../lan/src/Broadcast.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../lan/src/FrameListener.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../lan/src/Globals.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../lan/src/chat.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../new/src/main.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../taxi_service/.idea/.name" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../taxi_service/.idea/compiler.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../taxi_service/.idea/copyright/profiles_settings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../taxi_service/.idea/encodings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../taxi_service/.idea/misc.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../taxi_service/.idea/modules.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../taxi_service/.idea/workspace.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../taxi_service/src/MyHashTable.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../taxi_service/src/MyLinkedList.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../taxi_service/src/TaxiService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../taxi_service/src/actions.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../taxi_service/src/checker.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../taxi_service/src/graph.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../taxi_service/taxi_service.iml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/game/GUI/Map.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/game/GUI/Map.txt" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../new/src/game/Images/grass.png" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ping-pong.iws" />
@@ -205,8 +167,14 @@
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
+  <component name="Push.Settings">
+    <excluded-roots>
+      <path value="$PROJECT_DIR$/.." />
+    </excluded-roots>
+  </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\asderfers\IdeaProjects\ping-pong\src\game\Images" />
       <recent name="C:\Users\asderfers\IdeaProjects\ping-pong\src\game\GUI" />
     </key>
   </component>
@@ -479,21 +447,29 @@
       <option name="number" value="Default" />
       <updated>1461946690092</updated>
     </task>
+    <task id="LOCAL-00001" summary="map added">
+      <created>1461947317689</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1461947317689</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24973205" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24973205" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -510,6 +486,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="map added" />
+    <option name="LAST_COMMIT_MESSAGE" value="map added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
