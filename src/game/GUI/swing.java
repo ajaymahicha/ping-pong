@@ -40,27 +40,64 @@ public class swing extends JFrame {
     public void updateCenter(int i)
     {
         String s;
+        JPanel newpanel = new JPanel();
+        setContentPane(newpanel);
         final int j=i;
         if(i==1)
             s="YOU WIN";
         else
             s="YOU LOSE";
-        centerPanel.setLayout(new GridLayout(1,1,3,3));
-        JButton status = new JButton();
-        status.setText(s);
-        status.setFont(new Font("Serif",Font.BOLD,50));
-        if(i==1)
-            status.setForeground(Color.GREEN);
-        else
-            status.setForeground(Color.RED);
-        centerPanel.add(status);
+//        centerPanel.setLayout(new GridLayout(1,1,3,3));
+//        JButton status = new JButton();
+//        status.setText(s);
+//        status.setFont(new Font("Serif",Font.BOLD,50));
+//        if(i==1)
+//            status.setForeground(Color.GREEN);
+//        else
+//            status.setForeground(Color.RED);
+//        centerPanel.add(status);
+//
+//        status.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                new showStatus(j);
+//            }
+//        });
 
-        status.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new showStatus(j);
-            }
-        });
+        //Label showing status
+//        JLabel status = new JLabel();
+//        status.setText(s);
+//        status.setFont(new Font("Serif",Font.BOLD,50));
+//        if(i==1)
+//            status.setForeground(Color.GREEN);
+//        else
+//            status.setForeground(Color.RED);
+//
+//        //Main Menu Button
+//        JButton mainMenu = new JButton("Main menu");
+
+
+        //Exit Button
+//        JButton exit = new JButton("Exit");
+//
+//        newpanel.setLayout(new GridBagLayout());
+//        GridBagConstraints c = new GridBagConstraints();
+//
+//        c.anchor = GridBagConstraints.CENTER;
+//        c.gridx=0;
+//        c.gridy=2;
+//        c.gridwidth=2;
+//        c.fill = GridBagConstraints.HORIZONTAL;
+//        newpanel.add(status,c);
+//
+//        c.weightx = 0.5;
+//        c.gridx = 0;
+//        c.gridy=4;
+//        newpanel.add(mainMenu,c);
+//
+//        c.gridx=1;
+//        newpanel.add(exit,c);
+
     }
 
     //To update score of player whose id is "a"

@@ -18,6 +18,7 @@ public class showStatus extends JFrame {
     JPanel panel;
     public showStatus(int i) {
         String s;
+        System.out.println(System.getProperty("user.dir")+"\\src\\game\\Images\\mainmenu.png");
         if (i == 1)
             s = "YOU WIN";
         else
@@ -36,40 +37,82 @@ public class showStatus extends JFrame {
             }
         };
 
-        ;
+        panel=new JPanel();
         setContentPane(panel);
 
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        panel.setLayout(new GridLayout(1, 1, 3, 3));
 
-
-        JButton status = new JButton();
-        status.setFont(new Font("Serif", Font.BOLD, 40));
-
-        if (i == 1)
-            status.setForeground(Color.GREEN);
+        //Label showing status
+        JLabel status = new JLabel();
+        status.setText(s);
+        status.setFont(new Font("Serif",Font.BOLD,50));
+        if(i==1)
+            status.setForeground(Color.BLUE);
         else
             status.setForeground(Color.RED);
 
-        status.setText(s);
+        //Main Menu Button
+        JButton mainMenu = new JButton(){
 
-        status.setPreferredSize(new Dimension(280,90));
-        status.setOpaque(false);
-        status.setContentAreaFilled(false);
-        status.setBorderPainted(false);
-
-        panel.add(status);
-
-        status.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                swing._instance.setVisible(false);
-                if(!Main.isSinglePlayer)
-                    Menu.messageListener.interrupt();
-                new Mainscreen();
+            public void paint( Graphics g ) {
+                super.paint( g );
+                ImageIcon single = null;
+                try {
+                    single = new ImageIcon(ImageIO.read(new File(System.getProperty("user.dir")+"\\src\\game\\Images\\mainmenu.png")));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                g.drawImage(single.getImage(),  0 , 0 , getWidth() , getHeight() , null);
             }
-        });
+        };
+
+        mainMenu.setOpaque(false);
+        mainMenu.setContentAreaFilled(false);
+        mainMenu.setBorderPainted(false);
+
+
+        //Exit Button
+        JButton exit = new JButton(){
+
+            @Override
+            public void paint( Graphics g ) {
+                super.paint( g );
+                ImageIcon single = null;
+                try {
+                    single = new ImageIcon(ImageIO.read(new File(System.getProperty("user.dir")+"\\src\\game\\Images\\exit.png")));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                g.drawImage(single.getImage(),  0 , 0 , getWidth() , getHeight() , null);
+            }
+        };
+        exit.setOpaque(false);
+        exit.setContentAreaFilled(false);
+        exit.setBorderPainted(false);
+
+        panel.setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+
+        c.anchor = GridBagConstraints.CENTER;
+        c.gridx=0;
+        c.gridy=0;
+        c.gridwidth=2;
+        panel.add(status,c);
+
+        c.weightx = 0.5;
+        c.gridx = 0;
+        c.gridy=4;
+        c.gridwidth=1;
+        panel.add(mainMenu,c);
+
+        c.gridx=1;
+        panel.add(exit,c);
+
+
         pack();
 
     }
