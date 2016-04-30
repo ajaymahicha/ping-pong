@@ -7,8 +7,8 @@ public class Player {
     int port;
     int status;     //0:NOT PLAYING 1:CONNECTED 2:PLAYING 3:DISCONNECTED
     public boolean isAlive=true;
-    boolean isbot;
-    public int Lives = 3;
+    public boolean isbot;
+    public static int Lives = 100;
 
     public int getLives()
     {

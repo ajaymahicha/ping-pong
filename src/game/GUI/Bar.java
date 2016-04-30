@@ -4,38 +4,35 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Bar {
-   private int tileX,tileY;
+    private int tileX,tileY;
     private boolean horizontalControl ;
     private int playerId ;
-    private Image bar;
-
+public boolean freezed=false;
     public static int count=0;
 
     public Bar()
     {
         int id = Bar.count;
-        //System.out.println("Created bar "+count);
         playerId = id;
         Bar.count++;
-
         if(playerId == Main.playerId)
         {
             horizontalControl=true;
-            initialise(40,99);
+            initialise(400,1000-Board.ballRadius);
         }
         else
         {
             if( id-Main.playerId == 1 || id-Main.playerId == -3)
-                initialise(2,40);
+                initialise(0,400);
             if( id-Main.playerId == 2 || id-Main.playerId == -2)
-                initialise(40,2);
+                initialise(400,0);
             if( id-Main.playerId == 3 || id-Main.playerId == -1)
-                initialise(99,40);
+                initialise(1000-Board.ballRadius,400);
         }
     }
     public void initialise(int a,int b)
     {  //TODO
-         tileX=a;
+        tileX=a;
         tileY=b;
 
 //        x=a;
@@ -53,12 +50,12 @@ public class Bar {
 
     public void setPos(int pos)
     {
-        switch ((4+Main.playerId - playerId)%4)
+        switch ((4-Main.playerId + playerId)%4)
         {
             case 0:tileX=pos; break;
-            case 1:tileY=83-pos;break;
-            case 2:tileX=83-pos;break;
-            case 3:tileY=pos;break;
+            case 3:tileY=1000-pos-10*Board.ballRadius;break;
+            case 2:tileX=1000-pos-10*Board.ballRadius;break;
+            case 1:tileY=pos;break;
         }
     }
 
@@ -72,11 +69,8 @@ public class Bar {
 
     public void move(int dx,int dy,int tx,int ty)
     {
-//        x+=dx;
-//        y+=dy;
         tileX+=dx;
         tileY+=dy;
-       // System.out.println(x+" "+y+" "+tileX+" "+tileY);
     }
 }
 

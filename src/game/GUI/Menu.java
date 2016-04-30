@@ -42,7 +42,7 @@ public class Menu extends JFrame {
                 super.paintComponent(g);
                 Image image= null;
                 try {
-                    image = ImageIO.read(new File(currentDirectory+"\\src\\game\\Images\\bg.jpg"));
+                    image = ImageIO.read(getClass().getResource("/game/Images/bg.jpg"));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -83,88 +83,19 @@ public class Menu extends JFrame {
             subSection[1].add(sections[i]);
         }
         //start button
-        button = new JButton(){
-            @Override
-            public void paint( Graphics g ) {
-                super.paint( g );
-                ImageIcon multi = null;
-                try {
-                    multi = new ImageIcon(ImageIO.read(new File(currentDirectory+"\\src\\game\\Images\\start.png")));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-                g.drawImage(multi.getImage(),  0 , 0 , getWidth() , getHeight() , null);
-            }
-        };
-        button.setPreferredSize(new Dimension(280,90));
-        button.setOpaque(false);
-        button.setContentAreaFilled(false);
-        button.setBorderPainted(false);
+        button = new customButton("/game/Images/start.png");
         sections[2].add(button);
 
         //create server button
-        button1 = new JButton(){
-            @Override
-            public void paint( Graphics g ) {
-                super.paint( g );
-                ImageIcon multi = null;
-                try {
-                    multi = new ImageIcon(ImageIO.read(new File(currentDirectory+"\\src\\game\\Images\\createserver.png")));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-                g.drawImage(multi.getImage(),  0 , 0 , getWidth() , getHeight() , null);
-            }
-        };
-        button1.setPreferredSize(new Dimension(280,90));
-        button1.setOpaque(false);
-        button1.setContentAreaFilled(false);
-        button1.setBorderPainted(false);
+        button1 = new customButton("/game/Images/createserver.png");
         sections[3].add(button1);
 
         //join server button
-        button2 = new JButton(){
-            @Override
-            public void paint( Graphics g ) {
-                super.paint( g );
-                ImageIcon multi = null;
-                try {
-
-                    multi = new ImageIcon(ImageIO.read(new File(currentDirectory+"\\src\\game\\Images\\joinserver.png")));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-                g.drawImage(multi.getImage(),  0 , 0 , getWidth() , getHeight() , null);
-            }
-        };
-        button2.setPreferredSize(new Dimension(280,90));
-        button2.setOpaque(false);
-        button2.setContentAreaFilled(false);
-        button2.setBorderPainted(false);
+        button2 = new customButton("/game/Images/joinserver.png");
         sections[4].add(button2);
 
         //exit
-        button3 = new JButton(){
-            @Override
-            public void paint( Graphics g ) {
-                super.paint( g );
-                ImageIcon multi = null;
-                try {
-                    multi = new ImageIcon(ImageIO.read(new File(currentDirectory+"\\src\\game\\Images\\exit.png")));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-                g.drawImage(multi.getImage(),  0 , 0 , getWidth() , getHeight() , null);
-            }
-        };
-        button3.setPreferredSize(new Dimension(280,90));
-        button3.setOpaque(false);
-        button3.setContentAreaFilled(false);
-        button3.setBorderPainted(false);
+        button3 = new customButton("/game/Images/exit.png");
         sections[5].add(button3);
 
         button.addActionListener(new ActionListener() {
@@ -201,6 +132,12 @@ public class Menu extends JFrame {
 
         button1.addActionListener(startServer);
         button2.addActionListener(joinServer);
+        button3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
 
     }
 
@@ -231,7 +168,7 @@ public class Menu extends JFrame {
         connection = new JTextArea();
         connection.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createBevelBorder(0),new EmptyBorder(10,10,10,10)));
       //todo wtf is this psr
-        connection.setText("oppp\njhhjhuh\nghhgvhgvhg\njhvhgvghv");
+        connection.setText("-> "+Main.playername);
         connection.setOpaque(false);
         connection.setEditable(false);
         connection.setFont(new Font("Serif",Font.BOLD,30));
@@ -254,10 +191,10 @@ public class Menu extends JFrame {
         c.gridwidth=4;
         msgbox = new JTextArea();
         msgbox.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createBevelBorder(0),new EmptyBorder(10,10,10,10)));
-        msgbox.setText("Server started at 192.93.28.12:8000\nPlayer 1 started playing\nPlayer 2 started playing\nPlayer 3 started playing");
+        msgbox.setText("");
         msgbox.setOpaque(false);
         msgbox.setEditable(false);
-        msgbox.setForeground(Color.RED);
+        msgbox.setForeground(Color.CYAN);
         msgbox.setFont(new Font("Serif",Font.BOLD,25));
         bottom.add(msgbox,c);
 
@@ -276,8 +213,8 @@ public class Menu extends JFrame {
     public void updateMessage(String s){
         String msg=msgbox.getText();
 
-        msg+="\n"+s;
-        connection.setText(msg);
+        msg+=s+"\n";
+        msgbox.setText(msg);
     }
 
     ActionListener startServer = new ActionListener() {
@@ -302,6 +239,11 @@ public class Menu extends JFrame {
             }
 
             updateUsers();
+            try {
+                updateMessage("Server started at "+InetAddress.getLocalHost().getHostAddress()+":"+messageListener.port);
+            } catch (UnknownHostException e1) {
+                e1.printStackTrace();
+            }
 
             button1.setVisible(false);
             button2.setVisible(false);

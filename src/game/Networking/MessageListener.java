@@ -62,7 +62,7 @@ public class MessageListener extends Thread {
                 BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 PrintStream out =new PrintStream(socket.getOutputStream());
                 String data=in.readLine();
-               // System.out.println("RECIEVED: "+data);
+                System.out.println("RECIEVED: "+data);
                 new Handler(data,out).start();
             }
 

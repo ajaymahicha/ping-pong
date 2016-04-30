@@ -36,10 +36,11 @@ public class MessageSender extends Thread {
                 }
 
             } catch (UnknownHostException e) {
-                Main.list.remove(i);
+                Main.list.get(i).isbot=true;
             } catch (IOException e) {
-                e.printStackTrace();
+                Main.list.get(i).isbot=true;
             }
         }
+
     }
 }

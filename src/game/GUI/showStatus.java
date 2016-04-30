@@ -16,10 +16,10 @@ import java.net.Socket;
  */
 public class showStatus extends JFrame {
     JPanel panel;
-    public showStatus(int i) {
+    JFrame _instance;
+    public showStatus(int k) {
         String s;
-        System.out.println(System.getProperty("user.dir")+"\\src\\game\\Images\\mainmenu.png");
-        if (i == 1)
+        if (k == 1)
             s = "YOU WIN";
         else
             s = "YOU LOSE";
@@ -29,7 +29,7 @@ public class showStatus extends JFrame {
                 super.paintComponent(g);
                 Image image = null;
                 try {
-                    image = ImageIO.read(new File(System.getProperty("user.dir") + "\\src\\game\\Images\\bg.jpg"));
+                    image = ImageIO.read(getClass().getResource("/game/Images/bg.jpg"));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -37,20 +37,32 @@ public class showStatus extends JFrame {
             }
         };
 
-        panel=new JPanel();
         setContentPane(panel);
+        panel.setLayout(new GridLayout(2,1,3,3));
 
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        JPanel jPanel1 = new JPanel();
+        jPanel1.setOpaque(false);
+        panel.add(jPanel1);
+
+        JPanel jPanel2 = new JPanel();
+        jPanel2.setOpaque(false);
+        panel.add(jPanel2);
+        jPanel2.setLayout(new GridLayout(1,2,3,3));
+
+
         //Label showing status
         JLabel status = new JLabel();
         status.setText(s);
-        status.setFont(new Font("Serif",Font.BOLD,50));
-        if(i==1)
+        status.setFont(new Font("Serif",Font.BOLD,150));
+        if(k==1)
             status.setForeground(Color.BLUE);
         else
             status.setForeground(Color.RED);
+        jPanel1.add(status);
+
 
         //Main Menu Button
         JButton mainMenu = new JButton(){
@@ -60,7 +72,7 @@ public class showStatus extends JFrame {
                 super.paint( g );
                 ImageIcon single = null;
                 try {
-                    single = new ImageIcon(ImageIO.read(new File(System.getProperty("user.dir")+"\\src\\game\\Images\\mainmenu.png")));
+                    single = new ImageIcon(ImageIO.read(getClass().getResource("/game/Images/mainmenu.png")));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -68,7 +80,7 @@ public class showStatus extends JFrame {
                 g.drawImage(single.getImage(),  0 , 0 , getWidth() , getHeight() , null);
             }
         };
-
+        mainMenu.setPreferredSize(new Dimension(280,90));
         mainMenu.setOpaque(false);
         mainMenu.setContentAreaFilled(false);
         mainMenu.setBorderPainted(false);
@@ -82,7 +94,7 @@ public class showStatus extends JFrame {
                 super.paint( g );
                 ImageIcon single = null;
                 try {
-                    single = new ImageIcon(ImageIO.read(new File(System.getProperty("user.dir")+"\\src\\game\\Images\\exit.png")));
+                    single = new ImageIcon(ImageIO.read(getClass().getResource("/game/Images/exit.png")));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -90,32 +102,49 @@ public class showStatus extends JFrame {
                 g.drawImage(single.getImage(),  0 , 0 , getWidth() , getHeight() , null);
             }
         };
+        exit.setPreferredSize(new Dimension(280,90));
         exit.setOpaque(false);
         exit.setContentAreaFilled(false);
         exit.setBorderPainted(false);
 
-        panel.setLayout(new GridBagLayout());
-        GridBagConstraints c = new GridBagConstraints();
+        JPanel jpanel21 =new JPanel();
+        jpanel21.setOpaque(false);
+        jPanel2.add(jpanel21);
+        jpanel21.add(mainMenu);
 
-        c.anchor = GridBagConstraints.CENTER;
-        c.gridx=0;
-        c.gridy=0;
-        c.gridwidth=2;
-        panel.add(status,c);
+        JPanel jpanel22 = new JPanel();
+        jpanel22.setOpaque(false);
+        jPanel2.add(jpanel22);
+        jpanel22.add(exit);
 
-        c.weightx = 0.5;
-        c.gridx = 0;
-        c.gridy=4;
-        c.gridwidth=1;
-        panel.add(mainMenu,c);
+        mainMenu.addActionListener(mainmenuListener);
+        exit.addActionListener(exitListener);
 
-        c.gridx=1;
-        panel.add(exit,c);
-
-
-        pack();
-
+        setExtendedState(MAXIMIZED_BOTH);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        _instance = this;
     }
+
+    ActionListener mainmenuListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            _instance.dispose();
+            if(!Main.isSinglePlayer)
+            Menu.messageListener.interrupt();
+            new Mainscreen();
+        }
+    };
+
+    ActionListener exitListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if(!Main.isSinglePlayer)
+            Menu.messageListener.interrupt();
+            _instance.dispose();
+            System.exit(0);
+        }
+    };
+
         public static void main(String[] args)
         {
             new showStatus(1);

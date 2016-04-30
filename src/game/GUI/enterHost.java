@@ -27,7 +27,7 @@ public class enterHost extends JFrame {
                 super.paintComponent(g);
                 Image image= null;
                 try {
-                    image = ImageIO.read(new File(System.getProperty("user.dir")+"\\src\\game\\Images\\bg.jpg"));
+                    image = ImageIO.read(getClass().getResource("/game/Images/bg.jpg"));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -70,7 +70,7 @@ public class enterHost extends JFrame {
                 super.paint( g );
                 ImageIcon multi = null;
                 try {
-                    multi = new ImageIcon(ImageIO.read(new File(System.getProperty("user.dir")+"\\src\\game\\Images\\join.png")));
+                    multi = new ImageIcon(ImageIO.read(getClass().getResource("/game/Images/join.png")));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

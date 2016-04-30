@@ -19,7 +19,7 @@ public class Mainscreen extends JFrame{
                 super.paintComponent(g);
                 Image image= null;
                 try {
-                    image = ImageIO.read(new File(System.getProperty("user.dir")+"\\src\\game\\Images\\bg.jpg"));
+                    image = ImageIO.read(getClass().getResource("/game/Images/bg.jpg"));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -71,7 +71,8 @@ public class Mainscreen extends JFrame{
                 super.paint( g );
                 ImageIcon single = null;
                 try {
-                    single = new ImageIcon(ImageIO.read(new File(System.getProperty("user.dir")+"\\src\\game\\Images\\single.png")));
+                    single = new ImageIcon(ImageIO.read(getClass().getResource("/game/Images/single.png")));
+//                    single=new ImageIcon(ImageIO.read(getClass().getResource("Images/single.png")));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -94,7 +95,7 @@ public class Mainscreen extends JFrame{
                 super.paint( g );
                 ImageIcon multi = null;
                 try {
-                    multi = new ImageIcon(ImageIO.read(new File(System.getProperty("user.dir")+"\\src\\game\\Images\\multi.png")));
+                    multi = new ImageIcon(ImageIO.read(getClass().getResource("/game/Images/multi.png")));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -116,6 +117,7 @@ public class Mainscreen extends JFrame{
                 if(name.getText().equals(""))
                     JOptionPane.showMessageDialog(null,"Please Enter Your Name");
                 else {
+
                     Main.playername=name.getText();
                     Main.list.add(new Player(0, null, 0, 2, false, name.getText()));
 
@@ -123,9 +125,9 @@ public class Mainscreen extends JFrame{
                         Main.list.add(new Player(Main.list.size(), null, 0, 2, true, "Bot "+i));
 
                     Main.isSinglePlayer=true;
-
+                    dispose();
                     setVisible(false);
-                    new swing();
+                    new selectLevel();
                 }
             }
         });
@@ -136,6 +138,7 @@ public class Mainscreen extends JFrame{
                 if(name.getText().equals(""))
                     JOptionPane.showMessageDialog(null,"Please Enter Your Name");
                 else {
+                    dispose();
                     setVisible(false);
                     Main.playername=name.getText();
                     new Menu();

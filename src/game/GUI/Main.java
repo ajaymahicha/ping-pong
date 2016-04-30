@@ -12,6 +12,8 @@ public class Main {
     public static int count=0;
     public static int previousCount=0;
     public static boolean isSinglePlayer=false;
+    public static int speed=15;
+    public static int otherPlayerAlive = 3;
     public static void main(String[] args)
     {
         new Mainscreen();

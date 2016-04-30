@@ -21,10 +21,8 @@ int count;
         msg=message;
         msgArray = message.split(" ");
         board = Board.board;
-
         this.out = out;
     }
-
     @Override
     public void run()
     {
@@ -38,7 +36,9 @@ int count;
             String addmember = "ADDMEMBER " + msgArray[1] + " " + msgArray[2] + " ";
             if (msgArray.length == 4) {
                 addmember += msgArray[3];
-            } else {
+            }
+            else
+            {
                 addmember += "Player";
             }
             System.out.println(addmember);
@@ -73,8 +73,6 @@ int count;
             );
 
             Menu.gui.updateUsers();
-
-
             //ADDMEMBER 127.0.0.1 3128
         } else if (msgArray[0].equals("ADDMEMBER")) {
             Main.list.add(
@@ -87,8 +85,6 @@ int count;
                     )
             );
             Menu.gui.updateUsers();
-
-
             //PLAYER i pos
         } else if (msgArray[0].equals("PLAYER")) {
             count = Integer.parseInt(msgArray[msgArray.length - 1]);
@@ -108,18 +104,27 @@ int count;
             }
             Main.previousCount = count;
 
-        } else if (msgArray[0].equals("STARTED")) {
+        }else if(msgArray[0].equals("Freezed"))
+        {
+Board.board.update_freeze(Integer.parseInt(msgArray[1]));
+        }
+        else if(msgArray[0].equals("Released"))
+        {
+            Board.board.update_released(Integer.parseInt(msgArray[1]));
+        }
+        else if (msgArray[0].equals("STARTED")) {
             System.out.println("change " + msg + " " + msgArray[1]);
             Main.list.get(Integer.parseInt(msgArray[1])).updateStatus(2);
-
+            Menu.gui.updateMessage(msgArray[1]+":"+Main.list.get(Integer.parseInt(msgArray[1])).getName()+" started playing");
 
             //SCORE 0 9
         } else if (msgArray[0].equals("SCORE")) {
             int id = Integer.parseInt(msgArray[1]);
             int score = Integer.parseInt(msgArray[2]);
 
-            Main.list.get(id).Lives = score;
-            swing._instance.updateScore(id);
+         //   Main.list.get(id).Lives = score;
+            Board.board.update_score(score,id);
+          //  swing._instance.updateScore(id);
             //
 
             //DEAD i
